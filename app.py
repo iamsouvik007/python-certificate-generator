@@ -11,11 +11,14 @@ app.secret_key = 'your-secret-key-here'  # Change this to a random secret key
 
 def generate_certificate(name, certificate_date=None):
     """Generate a single certificate for the given name"""
-    certificate_template = Image.open('certificate_2.png')
+    # Get the directory where this script is located
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    certificate_template = Image.open(os.path.join(current_dir, 'certificate_2.png'))
     draw = ImageDraw.Draw(certificate_template)
     
     # Name on certificate
-    font = ImageFont.truetype('DancingScript-Regular.ttf', 100)
+    font = ImageFont.truetype(os.path.join(current_dir, 'DancingScript-Regular.ttf'), 100)
     text_position = (553, 420)
     draw.text(text_position, name, font=font, fill=(0, 6, 31))
     
@@ -27,7 +30,7 @@ def generate_certificate(name, certificate_date=None):
             formatted_date = date_obj.strftime('%B %d, %Y')
             
             # Add date to certificate
-            date_font = ImageFont.truetype('MrDeHaviland-Regular.ttf', 35)
+            date_font = ImageFont.truetype(os.path.join(current_dir, 'MrDeHaviland-Regular.ttf'), 35)
             date_position = (350, 900)  # Adjust position as needed
             draw.text(date_position, formatted_date, font=date_font, fill=(0, 0, 0))
         except ValueError:
