@@ -56,12 +56,13 @@ def create_zip_with_certificates(names, certificate_date=None):
     
     return temp_zip.name
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('simple.html')
+    if request.method == 'POST':
+        return generate_certificate_handler()
+    return render_template('index.html')
 
-@app.route('/generate', methods=['POST'])
-def generate():
+def generate_certificate_handler():
     try:
         option = request.form.get('option')
         certificate_date = request.form.get('certificate_date', '')
@@ -132,3 +133,6 @@ if __name__ == '__main__':
     # Ensure Certificates directory exists
     os.makedirs('Certificates', exist_ok=True)
     app.run(debug=True)
+
+# For Vercel deployment
+application = app
