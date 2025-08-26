@@ -3,9 +3,10 @@
 A modern web application for generating beautiful Python-themed certificates with a futuristic crystal glass UI and animated cosmic background.
 
 ## 🚀 Live Demo
-![alt text](image.png)
 
-**[Live Application](https://your-deployment-link.com)** - *Deployment link will be added here*
+**[🌟 Live Application](https://python-certificate-generator-uieq.vercel.app/)** - Generate certificates instantly!
+
+![Certificate Generator Preview](certificate_2.png)
 
 ## � What It Does
 
